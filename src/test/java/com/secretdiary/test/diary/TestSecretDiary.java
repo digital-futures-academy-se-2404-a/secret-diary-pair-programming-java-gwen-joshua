@@ -131,5 +131,17 @@ public class TestSecretDiary {
             //Assert
             assertEquals(true, testDiary.getIsLocked());
         }
+
+        @Test
+        public void WriteEntryDoesNotAddEntryWhileDiaryIsLocked() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.lock();
+            testDiary.write("This is a test entry!");
+            ArrayList<String> entries = testDiary.readAllEntries();
+            //Assert
+            assertEquals(0, entries.size());
+        }
     }
 }
