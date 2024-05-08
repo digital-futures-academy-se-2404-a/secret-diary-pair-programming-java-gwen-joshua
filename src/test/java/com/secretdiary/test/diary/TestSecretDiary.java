@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestSecretDiary {
     @Nested
@@ -35,8 +35,12 @@ public class TestSecretDiary {
         @Test
         public void testWriteEntryHandlesIncorrectTypes(){
             //Arrange
+            Diary testDiary = new Diary();
             //Act
             //Assert
+            assertThrows(IllegalArgumentException.class, () -> {
+                testDiary.write(null);
+            });
         }
     }
 }
