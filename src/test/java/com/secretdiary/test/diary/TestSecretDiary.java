@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestSecretDiary {
     @Nested
     @DisplayName("Secret Diary Write Tests")
-    class SecretDiaryWriteTests{
+    class SecretDiaryWriteTests {
 
         @Test
-        public void testWriteEntrySuccessfullyAddsValidInput(){
+        public void testWriteEntrySuccessfullyAddsValidInput() {
             //Arrange
             Diary testDiary = new Diary();
             //Act
@@ -23,7 +23,7 @@ public class TestSecretDiary {
         }
 
         @Test
-        public void testWriteEntrySuccessfullyAddsExtremeValidInput(){
+        public void testWriteEntrySuccessfullyAddsExtremeValidInput() {
             //Arrange
             Diary testDiary = new Diary();
             //Act
@@ -33,7 +33,7 @@ public class TestSecretDiary {
         }
 
         @Test
-        public void testWriteEntryHandlesIncorrectTypes(){
+        public void testWriteEntryHandlesIncorrectTypes() {
             //Arrange
             Diary testDiary = new Diary();
             //Act
@@ -46,10 +46,10 @@ public class TestSecretDiary {
 
     @Nested
     @DisplayName("Secret Diary Read Tests")
-    class SecretDiaryReadTests{
+    class SecretDiaryReadTests {
 
         @Test
-        public void testReadEntryReturnsASpecificString(){
+        public void testReadEntryReturnsASpecificString() {
             //Arrange
             Diary testDiary = new Diary();
             //Act
@@ -61,7 +61,7 @@ public class TestSecretDiary {
         }
 
         @Test
-        public void testReadEntryHandlesIncorrectDataTypes(){
+        public void testReadEntryHandlesIncorrectDataTypes() {
             //Arrange
             Diary testDiary = new Diary();
             //Act
@@ -72,6 +72,19 @@ public class TestSecretDiary {
             assertThrows(IllegalArgumentException.class, () -> {
                 testDiary.readEntry(null);
             });
+        }
+
+        @Test
+        public void testReadEntryHandlesNegativeNumbers() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.write("This is a test entry!");
+            testDiary.write("This is a test entry too!");
+            testDiary.write("This is a test entry as well!");
+            //Assert
+            assertEquals("This entry does not exist",
+                    testDiary.readEntry(-2));
         }
 
     }

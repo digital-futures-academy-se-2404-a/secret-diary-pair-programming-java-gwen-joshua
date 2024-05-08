@@ -15,6 +15,7 @@ protected ArrayList<String> entries = new ArrayList<String>();
     }
 
     public String readEntry(Integer num) {
+        if (num == null) throw new IllegalArgumentException("Please enter a valid number");
         return entries.get(num - 1);
     }
 }
