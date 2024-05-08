@@ -17,9 +17,9 @@ public class TestSecretDiary {
             //Arrange
             Diary testDiary = new Diary();
             //Act
-            Diary.write("This is a test entry!");
+            testDiary.write("This is a test entry!");
             //Assert
-            assertEquals("This is a test entry!", Diary.readEntry());
+            assertEquals("This is a test entry!", testDiary.readEntry(1));
         }
 
         @Test
