@@ -4,6 +4,7 @@ import com.secretdiary.app.Diary;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -98,6 +99,23 @@ public class TestSecretDiary {
             //Assert
             assertEquals("This entry does not exist",
                     testDiary.readEntry(5));
+        }
+
+        @Test
+        public void getEntriesShouldReturnAllEntries() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.write("This is a test entry!");
+            testDiary.write("This is a test entry too!");
+            testDiary.write("This is a test entry as well!");
+            ArrayList<String> entries = testDiary.readAllEntries();
+            //Assert
+            assertAll(
+                    () -> assertEquals("This is a test entry!", entries.get(0)),
+                    () -> assertEquals("This is a test entry too!", entries.get(1)),
+                    () -> assertEquals("This is a test entry as well!", entries.get(2))
+            );
         }
 
     }

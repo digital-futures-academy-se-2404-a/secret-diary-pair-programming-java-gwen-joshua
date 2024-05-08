@@ -16,7 +16,7 @@ protected ArrayList<String> entries = new ArrayList<String>();
 
     public String readEntry(Integer num) {
         if (num == null) throw new IllegalArgumentException("Please enter a valid number");
-        if(num < 0){
+        if(num < 0 || num > entries.size()){
             return "This entry does not exist";
         }else{
             return entries.get(num - 1);
