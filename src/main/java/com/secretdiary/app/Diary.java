@@ -23,7 +23,12 @@ protected boolean isLocked = false;
         if(num < 0 || num > entries.size()){
             return "This entry does not exist";
         }else{
-            return entries.get(num - 1);
+            if(!isLocked){
+                return entries.get(num - 1);
+            }else{
+                return "The Diary is Locked!";
+            }
+
         }
     }
 

@@ -48,6 +48,7 @@ Tests:<br/>
     1: Check that lock() successfully locks the diary<br/>
     2: Check that writeEntry(string) does not add to entries when diary is locked<br/>
     3: Check that getEntries() does not return entries when diary is locked<br/>
+    4: Check that getEntry does not return an entry when the Diary is locked
 
 
 ### Requirement 4<br/>

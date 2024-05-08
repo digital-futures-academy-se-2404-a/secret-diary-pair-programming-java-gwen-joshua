@@ -141,11 +141,11 @@ public class TestSecretDiary {
             testDiary.write("This is a test entry!");
             ArrayList<String> entries = testDiary.readAllEntries();
             //Assert
-            assertEquals(0, entries.size());
+            assertEquals("The Diary is Locked!", entries.get(0));
         }
 
         @Test
-        public void ReadEntryDoesNotReturnEntriesWhileDiaryIsLocked() {
+        public void ReadEntriesDoesNotReturnEntriesWhileDiaryIsLocked() {
             //Arrange
             Diary testDiary = new Diary();
             //Act
@@ -154,6 +154,17 @@ public class TestSecretDiary {
             ArrayList<String> entries = testDiary.readAllEntries();
             //Assert
             assertEquals("The Diary is Locked!", entries.get(0));
+        }
+
+        @Test
+        public void ReadEntryDoesNotReturnAnEntryWhileDiaryIsLocked() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.write("This is a test entry!");
+            testDiary.lock();
+            //Assert
+            assertEquals("The Diary is Locked!", testDiary.readEntry(1));
         }
     }
 }
