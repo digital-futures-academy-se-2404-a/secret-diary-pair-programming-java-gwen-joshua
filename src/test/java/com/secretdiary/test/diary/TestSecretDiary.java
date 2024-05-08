@@ -119,4 +119,17 @@ public class TestSecretDiary {
         }
 
     }
+    @Nested
+    @DisplayName("Secret Diary Read Tests")
+    class SecretDiaryLockTests {
+        @Test
+        public void testLockSuccessfullyLocksTheDiary() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.lock();
+            //Assert
+            assertEquals(true, testDiary.getIsLocked());
+        }
+    }
 }
