@@ -25,8 +25,11 @@ public class TestSecretDiary {
         @Test
         public void testWriteEntrySuccessfullyAddsExtremeValidInput(){
             //Arrange
+            Diary testDiary = new Diary();
             //Act
+            testDiary.write("dijshoigdikdkjgdiopjoignkuerhhgehjioreadiogte8hrtjoigtjihdfsiunfdpsjojrehjrfhkonfdhruhiufhkofeoirfhshfrnkvnjifgjngffgdhrfhjfedouauhrjhhtoifg");
             //Assert
+            assertEquals("dijshoigdikdkjgdiopjoignkuerhhgehjioreadiogte8hrtjoigtjihdfsiunfdpsjojrehjrfhkonfdhruhiufhkofeoirfhshfrnkvnjifgjngffgdhrfhjfedouauhrjhhtoifg", testDiary.readEntry(1));
         }
 
         @Test
