@@ -49,15 +49,29 @@ public class TestSecretDiary {
     class SecretDiaryReadTests{
 
         @Test
-        public void testWriteEntrySuccessfullyAddsValidInput(){
+        public void testReadEntryReturnsASpecificString(){
             //Arrange
             Diary testDiary = new Diary();
             //Act
             testDiary.write("This is a test entry!");
             testDiary.write("This is a test entry too!");
-            testDiary.write("This is a test entry aswell!");
+            testDiary.write("This is a test entry as well!");
             //Assert
             assertEquals("This is a test entry too!", testDiary.readEntry(2));
+        }
+
+        @Test
+        public void testReadEntryHandlesIncorrectDataTypes(){
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.write("This is a test entry!");
+            testDiary.write("This is a test entry too!");
+            testDiary.write("This is a test entry as well!");
+            //Assert
+            assertThrows(IllegalArgumentException.class, () -> {
+                testDiary.readEntry(null);
+            });
         }
 
     }
