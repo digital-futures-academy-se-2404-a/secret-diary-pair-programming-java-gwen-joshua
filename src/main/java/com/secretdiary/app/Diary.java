@@ -13,7 +13,7 @@ protected boolean isLocked = false;
     }
     public void write(String entry) {
         if (entry == null) throw new IllegalArgumentException("Please enter a valid string");
-        else{
+        if(!isLocked){
             entries.add(entry);
         }
     }

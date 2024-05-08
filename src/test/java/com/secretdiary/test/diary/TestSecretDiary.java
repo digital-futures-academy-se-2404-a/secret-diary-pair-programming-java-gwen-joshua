@@ -143,5 +143,17 @@ public class TestSecretDiary {
             //Assert
             assertEquals(0, entries.size());
         }
+
+        @Test
+        public void ReadEntryDoesNotReturnEntriesWhileDiaryIsLocked() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.write("This is a test entry!");
+            testDiary.lock();
+            ArrayList<String> entries = testDiary.readAllEntries();
+            //Assert
+            assertEquals("The Diary is Locked!", entries.get(0));
+        }
     }
 }
