@@ -25,7 +25,7 @@ Domain Model:
 
 | Objects | Properties             | Messages                                | Output                     |
 |---------|------------------------|-----------------------------------------|----------------------------|
-| Diary   | entries Array[@String] | readEntry(@number)<br/>readAllEntries() | @void<br/>@Array [@string] |
+| Diary   | entries Array[@String] | <br/>readEntry(@number)<br/>readAllEntries() | @void<br/>@Array [@string] |
 Tests:<br/>
     1: Check that readEntry(num) successfully returns a specific valid string from entries<br/>
     2: Check that readEntry handles incorrect data types<br/>

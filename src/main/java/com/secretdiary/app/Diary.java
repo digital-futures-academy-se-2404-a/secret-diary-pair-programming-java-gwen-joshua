@@ -28,6 +28,11 @@ protected boolean isLocked = false;
     }
 
     public ArrayList<String> readAllEntries(){
+        if(isLocked) {
+            ArrayList<String> locked = new ArrayList<String>();
+                    locked.add("The Diary is Locked!");
+                    return locked
+            ;}
         return entries;
     }
 
