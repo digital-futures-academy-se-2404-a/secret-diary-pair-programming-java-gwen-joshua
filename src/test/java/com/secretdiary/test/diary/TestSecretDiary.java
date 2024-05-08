@@ -87,5 +87,18 @@ public class TestSecretDiary {
                     testDiary.readEntry(-2));
         }
 
+        @Test
+        public void testReadEntryHandlesNumbersOutsideTheArray() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.write("This is a test entry!");
+            testDiary.write("This is a test entry too!");
+            testDiary.write("This is a test entry as well!");
+            //Assert
+            assertEquals("This entry does not exist",
+                    testDiary.readEntry(5));
+        }
+
     }
 }
