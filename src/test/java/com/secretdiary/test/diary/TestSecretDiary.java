@@ -43,4 +43,22 @@ public class TestSecretDiary {
             });
         }
     }
+
+    @Nested
+    @DisplayName("Secret Diary Read Tests")
+    class SecretDiaryReadTests{
+
+        @Test
+        public void testWriteEntrySuccessfullyAddsValidInput(){
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.write("This is a test entry!");
+            testDiary.write("This is a test entry too!");
+            testDiary.write("This is a test entry aswell!");
+            //Assert
+            assertEquals("This is a test entry too!", testDiary.readEntry(2));
+        }
+
+    }
 }
