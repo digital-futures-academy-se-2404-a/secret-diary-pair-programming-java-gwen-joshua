@@ -120,7 +120,7 @@ public class TestSecretDiary {
 
     }
     @Nested
-    @DisplayName("Secret Diary Read Tests")
+    @DisplayName("Secret Diary Lock Tests")
     class SecretDiaryLockTests {
         @Test
         public void testLockSuccessfullyLocksTheDiary() {
@@ -165,6 +165,21 @@ public class TestSecretDiary {
             testDiary.lock();
             //Assert
             assertEquals("The Diary is Locked!", testDiary.readEntry(1));
+        }
+    }
+
+    @Nested
+    @DisplayName("Secret Diary Unlock Tests")
+    class SecretDiaryUnlockTests {
+        @Test
+        public void testUnlockSuccessfullyUnlocksTheDiaryWithTheCorrectPin() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.lock();
+            testDiary.unlock(1234);
+            //Assert
+            assertEquals(false, testDiary.getIsLocked());
         }
     }
 }
