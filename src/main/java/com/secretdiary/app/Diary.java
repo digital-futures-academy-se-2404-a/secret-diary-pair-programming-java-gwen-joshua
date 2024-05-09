@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Diary {
 protected ArrayList<String> entries = new ArrayList<String>();
 protected boolean isLocked = false;
-protected Integer pin = 1234;
+protected int pin = 1234;
 
     public Diary() {}
 
@@ -14,7 +14,9 @@ protected Integer pin = 1234;
     }
 
     public void unlock(Integer pin) {
-        this.isLocked = false;
+        if(pin == this.pin){
+            this.isLocked = false;
+        }
     }
     public void write(String entry) {
         if (entry == null) throw new IllegalArgumentException("Please enter a valid string");

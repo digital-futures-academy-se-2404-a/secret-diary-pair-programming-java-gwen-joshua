@@ -191,5 +191,25 @@ public class TestSecretDiary {
             //Assert
             assertTrue( testDiary.getIsLocked());
         }
+        @Test
+        public void testUnlockDoesNotUnlockTheDiaryWithANegativeNumber() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.lock();
+            testDiary.unlock(-2345);
+            //Assert
+            assertTrue( testDiary.getIsLocked());
+        }
+        @Test
+        public void testUnlockDoesNotUnlockTheDiaryWithAnInvalidDataType() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.lock();
+            testDiary.unlock(null);
+            //Assert
+            assertTrue( testDiary.getIsLocked());
+        }
     }
 }
