@@ -181,5 +181,15 @@ public class TestSecretDiary {
             //Assert
             assertEquals(false, testDiary.getIsLocked());
         }
+        @Test
+        public void testUnlockDoesNotUnlockTheDiaryWithTheIncorrectPin() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.lock();
+            testDiary.unlock(2345);
+            //Assert
+            assertTrue( testDiary.getIsLocked());
+        }
     }
 }

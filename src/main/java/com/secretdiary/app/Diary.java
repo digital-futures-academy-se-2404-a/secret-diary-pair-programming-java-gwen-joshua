@@ -5,11 +5,16 @@ import java.util.ArrayList;
 public class Diary {
 protected ArrayList<String> entries = new ArrayList<String>();
 protected boolean isLocked = false;
+protected Integer pin = 1234;
 
     public Diary() {}
 
     public void lock() {
         isLocked = true;
+    }
+
+    public void unlock(Integer pin) {
+        this.isLocked = false;
     }
     public void write(String entry) {
         if (entry == null) throw new IllegalArgumentException("Please enter a valid string");
