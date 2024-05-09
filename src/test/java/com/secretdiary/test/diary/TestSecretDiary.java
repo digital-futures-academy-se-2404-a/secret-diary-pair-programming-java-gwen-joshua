@@ -213,7 +213,7 @@ public class TestSecretDiary {
             });
         }
         @Test
-        public void  testwriteEntrySuccessfullyAddsEntryToEntriesWhenDiaryisUnlocked() {
+        public void  testWriteEntrySuccessfullyAddsEntryToEntriesWhenDiaryIsUnlocked() {
             //Arrange
             Diary testDiary = new Diary();
             //Act
@@ -222,6 +222,29 @@ public class TestSecretDiary {
             testDiary.write("This is a test entry!");
             //Assert
             assertEquals("This is a test entry!", testDiary.readEntry(1));
+        }
+        @Test
+        public void  testReadEntrySuccessfullyGetsEntryWhenDiaryIsUnlocked() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.write("This is a test entry!");
+            testDiary.lock();
+            testDiary.unlock(1234);
+            //Assert
+            assertEquals("This is a test entry!", testDiary.readEntry(1));
+        }
+        @Test
+        public void  testReadAllEntrySuccessfullyGetsEntriesWhenDiaryIsUnlocked() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.write("This is a test entry!");
+            testDiary.lock();
+            testDiary.unlock(1234);
+            ArrayList<String> entries = testDiary.readAllEntries();
+            //Assert
+            assertEquals("This is a test entry!", entries.get(0));
         }
     }
 }
