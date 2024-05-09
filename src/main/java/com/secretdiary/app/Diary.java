@@ -14,6 +14,7 @@ protected int pin = 1234;
     }
 
     public void unlock(Integer pin) {
+        if (pin == null) throw new IllegalArgumentException("Please enter a valid number");
         if(pin == this.pin){
             this.isLocked = false;
         }

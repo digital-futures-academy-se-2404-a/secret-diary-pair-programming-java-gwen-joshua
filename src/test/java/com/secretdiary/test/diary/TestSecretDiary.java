@@ -207,9 +207,21 @@ public class TestSecretDiary {
             Diary testDiary = new Diary();
             //Act
             testDiary.lock();
-            testDiary.unlock(null);
             //Assert
-            assertTrue( testDiary.getIsLocked());
+            assertThrows(IllegalArgumentException.class, () -> {
+                testDiary.unlock(null);
+            });
+        }
+        @Test
+        public void  testwriteEntrySuccessfullyAddsEntryToEntriesWhenDiaryisUnlocked() {
+            //Arrange
+            Diary testDiary = new Diary();
+            //Act
+            testDiary.lock();
+            testDiary.unlock(1234);
+            testDiary.write("This is a test entry!");
+            //Assert
+            assertEquals("This is a test entry!", testDiary.readEntry(1));
         }
     }
 }
